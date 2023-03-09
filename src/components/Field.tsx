@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import params from '../params';
+import colors from '../colors';
 
 type FieldProps = {
   mined?: boolean;
@@ -44,18 +45,18 @@ const getColorByNearMines = (nearMines: number) => {
   if (nearMines > 0) {
     switch (nearMines) {
       case 1:
-        color = '#2A28D7';
+        color = colors.lowDanger;
         break;
       case 2:
-        color = '#2B520F';
+        color = colors.midDanger;
         break;
       case 3:
       case 4:
       case 5:
-        color = '#F9060A';
+        color = colors.highDanger;
         break;
       default:
-        color = '#F221A9';
+        color = colors.hyperDanger;
     }
   }
   return color;
@@ -68,15 +69,15 @@ const styles = StyleSheet.create({
     borderWidth: params.borderSize,
   },
   regular: {
-    backgroundColor: '#999',
-    borderLeftColor: '#ccc',
-    borderTopColor: '#ccc',
-    borderRightColor: '#333',
-    borderBottomColor: '#333',
+    backgroundColor: colors.fieldBackground,
+    borderLeftColor: colors.fieldBorderTopLeft,
+    borderTopColor: colors.fieldBorderTopLeft,
+    borderRightColor: colors.fieldBorderBottomRight,
+    borderBottomColor: colors.fieldBorderBottomRight,
   },
   opened: {
-    backgroundColor: '#999',
-    borderColor: '#777',
+    backgroundColor: colors.fieldBackground,
+    borderColor: colors.fieldOpenedBorder,
     alignItems: 'center',
     justifyContent: 'center',
   },
