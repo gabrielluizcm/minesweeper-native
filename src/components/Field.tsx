@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import Mine from './Mine';
+import Flag from './Flag';
 
 import params from '../params';
 import colors from '../colors';
@@ -11,10 +12,11 @@ type FieldProps = {
   opened?: boolean;
   nearMines: number;
   exploded?: boolean;
+  flagged?: boolean;
 };
 
 const Field = (props: FieldProps) => {
-  const { mined, opened, nearMines, exploded } = props;
+  const { mined, opened, nearMines, exploded, flagged } = props;
 
   const styleField: object[] = [styles.field];
 
@@ -24,7 +26,7 @@ const Field = (props: FieldProps) => {
   if (exploded) {
     styleField.push(styles.exploded);
   }
-  if (styleField.length === 1) {
+  if (!opened && !exploded) {
     styleField.push(styles.regular);
   }
 
@@ -38,6 +40,7 @@ const Field = (props: FieldProps) => {
         false
       )}
       {mined && opened ? <Mine /> : false}
+      {flagged && !opened ? <Flag /> : false}
     </View>
   );
 };
