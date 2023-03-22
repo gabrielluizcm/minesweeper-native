@@ -1,4 +1,4 @@
-type BoardTile = {
+export type BoardTile = {
   row: number;
   column: number;
   opened: boolean;
@@ -37,7 +37,11 @@ const spreadMines = (board: BoardTile[][], minesAmount: number) => {
     const rowToMine = Math.round(Math.random() * rows);
     const columnToMine = Math.round(Math.random() * columns);
 
-    if (!board[rowToMine][columnToMine].mined) {
+    if (
+      board[rowToMine] &&
+      board[rowToMine][columnToMine] &&
+      !board[rowToMine][columnToMine].mined
+    ) {
       board[rowToMine][columnToMine].mined = true;
       minesPlanted++;
     }
