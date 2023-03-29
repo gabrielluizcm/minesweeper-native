@@ -8,7 +8,7 @@ export type BoardTile = {
   nearMines: number;
 };
 
-type Board = BoardTile[][];
+export type Board = BoardTile[][];
 
 type SelectedBoardTileProps = {
   board: Board;

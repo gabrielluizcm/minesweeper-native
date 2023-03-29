@@ -3,12 +3,19 @@ import { View, StyleSheet } from 'react-native';
 
 import Field from './Field';
 
-import { BoardTile } from '../functions';
+import { Board, BoardTile } from '../functions';
 
-export default (props: { board: BoardTile[][] }) => {
+type MineFieldProps = {
+  board: Board;
+  onOpenField: (r: number, c: number) => void;
+};
+
+export default (props: MineFieldProps) => {
   const rows = props.board.map((row: BoardTile[], r) => {
     const columns = row.map((field: BoardTile, c) => {
-      return <Field {...field} key={c} />;
+      return (
+        <Field {...field} key={c} onOpen={() => props.onOpenField(r, c)} />
+      );
     });
     return (
       <View key={r} style={styles.row}>
