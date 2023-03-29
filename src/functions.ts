@@ -144,6 +144,11 @@ const showMines = (board: Board) =>
     .filter(field => field.mined)
     .forEach(field => (field.opened = true));
 
+const switchFlag = ({ board, row, column }: SelectedBoardTileProps) => {
+  const field = board[row][column];
+  field.flagged = !field.flagged;
+};
+
 export {
   createMinedBoard,
   cloneBoard,
@@ -151,4 +156,5 @@ export {
   hasExplosion,
   wonGame,
   showMines,
+  switchFlag,
 };

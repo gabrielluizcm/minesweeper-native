@@ -9,6 +9,7 @@ import {
   hasExplosion,
   wonGame,
   showMines,
+  switchFlag,
   Board,
 } from './src/functions';
 
@@ -58,11 +59,27 @@ export default class App extends React.Component<{}, AppState> {
     this.setState({ board, won, lost });
   };
 
+  onSelectField = (row: number, column: number) => {
+    const board = cloneBoard(this.state.board);
+    switchFlag({ board, row, column });
+    const won = wonGame(board);
+
+    if (won) {
+      Alert.alert('Congratulations', 'You win!');
+    }
+
+    this.setState({ board, won });
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.board}>
-          <Minefield board={this.state.board} onOpenField={this.onOpenField} />
+          <Minefield
+            board={this.state.board}
+            onOpenField={this.onOpenField}
+            onSelectField={this.onSelectField}
+          />
         </View>
       </SafeAreaView>
     );
