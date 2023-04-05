@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import Field from './Field';
 
 import { Board, BoardTile } from '../functions';
+import colors from '../colors';
 
 type MineFieldProps = {
   board: Board;
@@ -34,7 +35,7 @@ export default (props: MineFieldProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#EEE',
+    backgroundColor: colors.minefieldBackground,
   },
   row: {
     flexDirection: 'row',

@@ -149,6 +149,9 @@ const switchFlag = ({ board, row, column }: SelectedBoardTileProps) => {
   field.flagged = !field.flagged;
 };
 
+const flagsUsed = (board: Board) =>
+  fields(board).filter(field => field.flagged).length;
+
 export {
   createMinedBoard,
   cloneBoard,
@@ -157,4 +160,5 @@ export {
   wonGame,
   showMines,
   switchFlag,
+  flagsUsed,
 };

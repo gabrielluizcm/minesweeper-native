@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import colors from '../colors';
+
 export default (props: { bigger?: boolean }) => {
   return (
     <View style={styles.container}>
@@ -22,21 +24,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 14,
     width: 2,
-    backgroundColor: '#222',
+    backgroundColor: colors.flagBase,
     marginLeft: 9,
   },
   flag: {
     position: 'absolute',
     height: 5,
     width: 6,
-    backgroundColor: '#f22',
+    backgroundColor: colors.highDanger,
     marginLeft: 3,
   },
   base1: {
     position: 'absolute',
     height: 2,
     width: 6,
-    backgroundColor: '#222',
+    backgroundColor: colors.flagBase,
     marginLeft: 7,
     marginTop: 10,
   },
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 2,
     width: 10,
-    backgroundColor: '#222',
+    backgroundColor: colors.flagBase,
     marginLeft: 5,
     marginTop: 12,
   },
